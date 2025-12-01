@@ -13,6 +13,6 @@ Tests:
 Go to the site https://www.saucedemo.com/
 
 1) Login with valid/invalid users
-2) Addd multiple items to cart and verify checkout
+2) Add multiple items to cart and verify checkout
 3) Sort items by price/name
 4) Complete end-to-end order
