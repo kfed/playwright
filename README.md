@@ -23,3 +23,7 @@ npx cucumber-js --require-module ts-node/register --require tests/steps/**/*.ts
 
 To View Cucumber Report:
 open reports/cucumber-report.html
+
+
+NOTE:
+Github Actions workflow is now operational, so any push will execute and generate a cucumber report in Github. View in Actions tab for the results and report.
