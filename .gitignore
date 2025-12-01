@@ -3,6 +3,7 @@ node_modules/
 
 # Playwright reports and test results
 playwright-report/
+reports/
 test-results/
 blob-report/
 
@@ -27,3 +28,4 @@ out/
 # IDE files
 .vscode/
 .idea/
+

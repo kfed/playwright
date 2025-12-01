@@ -16,3 +16,10 @@ Go to the site https://www.saucedemo.com/
 2) Add multiple items to cart and verify checkout
 3) Sort items by price/name
 4) Complete end-to-end order
+
+
+To Execute Tests:
+npx cucumber-js --require-module ts-node/register --require tests/steps/**/*.ts
+
+To View Cucumber Report:
+open reports/cucumber-report.html
