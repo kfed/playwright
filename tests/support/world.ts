@@ -1,4 +1,3 @@
-// filepath: /Users/kd/playwright/tests/support/world.ts
 import { setWorldConstructor, World } from '@cucumber/cucumber';
 import { chromium, Browser, Page } from 'playwright';
 
