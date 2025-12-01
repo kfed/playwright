@@ -19,7 +19,7 @@ Go to the site https://www.saucedemo.com/
 
 
 To Execute Tests:
-npx cucumber-js --require-module ts-node/register --require tests/steps/**/*.ts
+npx cucumber-js --require-module ts-node/register --require 'tests/steps/**/*.ts' 'tests/features/**/*.feature'
 
 To View Cucumber Report:
 open reports/cucumber-report.html

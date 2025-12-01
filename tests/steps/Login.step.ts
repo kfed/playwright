@@ -1,7 +1,6 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { time } from 'console';
 
 Given('I am on the SauceDemo login page', async function () {
   this.loginPage = new LoginPage(this.page);
@@ -33,5 +32,4 @@ Then('I should see an error message', async function () {
 
 Then('I should still be on the login page after 5 seconds', async function () {
     expect(this.loginError.message).toContain('Login timed out after 5 seconds');
-
 });
