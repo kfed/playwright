@@ -2,7 +2,7 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
-import { CheckoutPage } from '../pages/Checkout';
+import { CheckoutPage } from '../pages/CheckoutPage';
 
 
 Given('I am on the SauceDemo login page', async function () {

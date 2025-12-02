@@ -26,12 +26,25 @@ When('I proceed to checkout and enter first name {string}, last name {string}, a
     await this.productPage.openCart();
     await this.checkoutPage.startCheckout();
     await this.checkoutPage.fillCheckoutInfo(firstName, lastName, postalCode);
-    await this.checkoutPage.finishOrder();
   }
 );
+
+When('I finish the order', async function () {
+  await this.checkoutPage.finishOrder();
+});
 
 Then('the order should be completed successfully', async function () {
   const isComplete = await this.checkoutPage.isOrderComplete();
   expect(isComplete).toBeTruthy();
   await expect(this.page.locator('.complete-header')).toHaveText(/THANK YOU FOR YOUR ORDER/i);
+});
+
+Then('the total amount should be "${float}"', async function (expectedTotal: number) {
+  // Wait for the summary total to be visible
+  await this.page.waitForSelector('.summary_total_label', { state: 'visible', timeout: 10000 });
+  const totalText = await this.checkoutPage.getSubTotalAmount();
+  const match = totalText?.match(/\$([\d.]+)/);
+  expect(match).not.toBeNull();
+  const total = parseFloat(match![1]);
+  expect(total).toBeCloseTo(expectedTotal, 2);
 });

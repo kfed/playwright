@@ -9,6 +9,7 @@ export class CheckoutPage {
   readonly continueButton = '[data-test="continue"]';
   readonly finishButton = '[data-test="finish"]';
   readonly completeHeader = '.complete-header';
+  readonly summaryTotal = '.summary_total_label';
 
   constructor(page: Page) {
     this.page = page;
@@ -31,5 +32,11 @@ export class CheckoutPage {
 
   async isOrderComplete() {
     return this.page.locator(this.completeHeader).isVisible();
+  }
+  
+  async getSubTotalAmount(): Promise<string> {
+    const text = await this.page.locator(".summary_subtotal_label").textContent();
+    if (!text) throw new Error('Total amount not found on the page');
+    return text;
   }
 }
