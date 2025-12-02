@@ -9,8 +9,8 @@ When('I add the following items to the cart:', async function (dataTable) {
 });
 
 Then('the cart should contain {int} items', async function (count: number) {
-  await this.cartPage.openCart();
-  const cartCount = await this.cartPage.getCartCount();
+  await this.productPage.openCart();
+  const cartCount = await this.productPage.getCartCount();
   expect(cartCount).toBe(String(count));
 });
 
@@ -21,10 +21,9 @@ Given('I have added {string} and {string} to the cart', async function (item1: s
   }
 });
 
-When(
-  'I proceed to checkout and enter first name {string}, last name {string}, and postal code {string}',
+When('I proceed to checkout and enter first name {string}, last name {string}, and postal code {string}',
   async function (firstName: string, lastName: string, postalCode: string) {
-    await this.cartPage.openCart();
+    await this.productPage.openCart();
     await this.checkoutPage.startCheckout();
     await this.checkoutPage.fillCheckoutInfo(firstName, lastName, postalCode);
     await this.checkoutPage.finishOrder();

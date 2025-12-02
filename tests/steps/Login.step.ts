@@ -2,7 +2,6 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
-import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/Checkout';
 
 
@@ -19,7 +18,6 @@ Given('I am logged in as {string} with password {string}', async function (usern
 
   // Optionally initialize other page objects here if needed
   this.productPage = new ProductPage(this.page);
-  this.cartPage = new CartPage(this.page);
   this.checkoutPage = new CheckoutPage(this.page);
 });
 
