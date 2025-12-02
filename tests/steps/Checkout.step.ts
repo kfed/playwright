@@ -1,17 +1,5 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { CartPage } from '../pages/CartPage';
-import { CheckoutPage } from '../pages/Checkout';
-
-Given('I am logged in as {string} with password {string}', async function (username: string, password: string) {
-  this.loginPage = new LoginPage(this.page);
-  await this.loginPage.goto();
-  await this.loginPage.login(username, password);
-  await expect(this.page).toHaveURL(/inventory.html/);
-  this.cartPage = new CartPage(this.page);
-  this.checkoutPage = new CheckoutPage(this.page);
-});
 
 When('I add the following items to the cart:', async function (dataTable) {
   for (const { item } of dataTable.hashes()) {

@@ -1,10 +1,26 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import { ProductPage } from '../pages/ProductPage';
+import { CartPage } from '../pages/CartPage';
+import { CheckoutPage } from '../pages/Checkout';
+
 
 Given('I am on the SauceDemo login page', async function () {
   this.loginPage = new LoginPage(this.page);
   await this.loginPage.goto();
+});
+
+Given('I am logged in as {string} with password {string}', async function (username: string, password: string) {
+  this.loginPage = new LoginPage(this.page);
+  await this.loginPage.goto();
+  await this.loginPage.login(username, password);
+  await expect(this.page).toHaveURL(/inventory.html/);
+
+  // Optionally initialize other page objects here if needed
+  this.productPage = new ProductPage(this.page);
+  this.cartPage = new CartPage(this.page);
+  this.checkoutPage = new CheckoutPage(this.page);
 });
 
 When('I login with username {string} and password {string}', async function (username: string, password: string) {
